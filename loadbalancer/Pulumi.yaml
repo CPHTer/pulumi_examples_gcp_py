@@ -1,0 +1,6 @@
+name: loadbalancer
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: A example project to create a GCP load balancer and Nginx servers
