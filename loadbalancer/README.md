@@ -30,7 +30,21 @@
     ```bash
     $ pulumi config set gcp:project <your-gcp-project-name>
     ```
-4. 執行部署
+4. 執行單元測試
+    ```bash
+    $ python -m unittest -v
+    test_server_tags (tests.test_backend_server.TestingNginx) ... ok
+    test_firewall_ports (tests.test_firewall.TestingFirewall) ... ok
+    test_source_ranges (tests.test_firewall.TestingFirewall) ... ok
+    test_urlmap_host_rules (tests.test_lb.TestingLoadBalancer) ... ok
+    test_urlmap_path_matchers (tests.test_lb.TestingLoadBalancer) ... ok
+
+    ----------------------------------------------------------------------
+    Ran 5 tests in 0.514s
+
+    OK
+    ```
+5. 執行部署
     ```bash
     $ pulumi up
     Previewing update (dev)
