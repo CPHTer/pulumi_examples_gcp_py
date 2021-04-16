@@ -7,7 +7,11 @@ def setup(address, servers):
     Args:
         address (str): The created ip address for this load balancer.
         servers (array): The id of backend servers.
+    Returns:
+        applied_res (dict): The information of applied resource.
     """
+
+    applied_res = dict()
 
     # STEP 1. Create instance group
     webservers = compute.InstanceGroup("webservers",
@@ -66,3 +70,12 @@ def setup(address, servers):
         target = target_http_proxy.self_link,
         ip_address = address
     )
+
+    applied_res["webservers"] = webservers
+    applied_res["http_health_check"] = http_health_check
+    applied_res["backend_service"] = backend_service
+    applied_res["url_map"] = url_map
+    applied_res["target_http_proxy"] = target_http_proxy
+    applied_res["forwarding_rule"] = forwarding_rule
+
+    return applied_res
