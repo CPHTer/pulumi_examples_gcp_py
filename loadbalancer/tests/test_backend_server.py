@@ -17,7 +17,7 @@ class TestingNginx(unittest.TestCase):
     @pulumi.runtime.test
     def test_server_tags(self):
         def check_tags(args):
-            result_urn, result_tags = args
+            actual_urn, actual_tags = args
             expected_tags = ["webserver"]
-            self.assertCountEqual(result_tags, expected_tags, f'server {result_urn} must have webserver tag')
+            self.assertCountEqual(actual_tags, expected_tags, f'server {actual_urn} must have webserver tag')
         return pulumi.Output.all(test_server._name, test_server.tags).apply(check_tags)
